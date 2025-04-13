@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Markdown to PDF Converter</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Add Mermaid.js support -->
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas/dist/html2canvas.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="panel left-panel">
+            <h2>Markdown Input</h2>
+            <textarea id="markdown-input" placeholder="Enter your markdown here..."></textarea>
+            <div class="file-upload">
+                <input type="file" id="file-input" accept=".md,.markdown">
+                <button id="upload-btn">Upload Markdown File</button>
+            </div>
+        </div>
+        <div class="panel right-panel">
+            <h2>PDF Preview</h2>
+            <div id="pdf-preview">
+                <p>PDF preview will appear here</p>
+            </div>
+            <div class="download-buttons">
+                <button id="download-pdf">Download PDF</button>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -16,6 +16,7 @@ const uploadBtn = document.getElementById('upload-btn');
 const pdfPreview = document.getElementById('pdf-preview');
 const downloadPdfBtn = document.getElementById('download-pdf');
 let isProcessing = false;
+let currentFileName = 'document'; // Add this line to store filename
 
 // Event listeners
 document.addEventListener('DOMContentLoaded', function() {
@@ -44,6 +45,9 @@ async function handleFileUpload(event) {
         alert('Please upload a Markdown file (.md or .markdown)');
         return;
     }
+
+    // Store filename without extension
+    currentFileName = file.name.replace(/\.(md|markdown)$/i, '');
 
     const reader = new FileReader();
     reader.onload = (e) => {
@@ -379,8 +383,8 @@ async function downloadPdf() {
         // Process the document content
         processElements();
         
-        // Save the PDF with a specific name
-        doc.save('sql-diagram-generator-plan.pdf');
+        // Save the PDF with the stored filename
+        doc.save(`${currentFileName}.pdf`);
         
     } catch (error) {
         console.error('PDF generation error:', error);

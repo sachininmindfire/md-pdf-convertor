@@ -213,12 +213,12 @@ async function downloadPdf() {
             doc.rect(margins.left, currentY, contentWidth, boxHeight, 'S');
             
             // If we have a language, add it as a header
-            if (language) {
+            //if (language) {
                 doc.setFontSize(8);
                 doc.setTextColor(100, 100, 100);
                 doc.text(language, margins.left + 2, currentY + 4);
-                currentY += 6;
-            }
+                currentY += 6;               
+            //}
             
             // Set code font
             doc.setFontSize(styles.code.fontSize);
@@ -229,6 +229,7 @@ async function downloadPdf() {
             const codeLines = code.split('\n');
             const maxLines = 40; // Limit to prevent very large code blocks
             
+           
             // Add each line with proper indentation preserved
             codeLines.slice(0, maxLines).forEach((line, index) => {
                 // Handle continuation of same code block on next page
@@ -281,7 +282,7 @@ async function downloadPdf() {
             }
             
             // Process all elements in order
-            Array.from(previewElement.children).forEach(element => {
+            Array.from(previewElement.children[0]?.children).forEach(element => {
                 // Skip the title if we already processed it
                 if (element === titleElement) return;
                 
